@@ -69,5 +69,7 @@ export const getUrl = async (req: Request, res: Response) => {
             return res.status(404).json({ message: "Original link not found" });
         }
         return res.redirect(301, url.url);
-    } catch (error) {}
+    } catch (error) {
+        return res.status(500).json({ message: "Something went wrong" });
+    }
 };
