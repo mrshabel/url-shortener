@@ -36,7 +36,7 @@ export const createURLKey = async (req: Request, res: Response) => {
 
         return res.status(200).json({
             message: "Link shortened successfully",
-            shortURL: `${url}/${shortURL.urlKey}`,
+            data: `${url}/${shortURL.urlKey}`,
         });
     } catch (error) {
         console.error(error);
@@ -44,7 +44,7 @@ export const createURLKey = async (req: Request, res: Response) => {
         if (error instanceof UniqueConstraintError)
             return res.status(200).json({
                 message: "Link shortened successfully",
-                shortURL: `${url}/${urlKey}`,
+                data: `${url}/${urlKey}`,
             });
 
         return res.status(500).json({ message: "Something went wrong" });
