@@ -1,9 +1,7 @@
 import { Sequelize } from "sequelize";
 import { createClient } from "redis";
 
-export const sequelize = new Sequelize(
-    "postgres://postgres:postgres@localhost:5432/url_shortener"
-);
+export const sequelize = new Sequelize(process.env.DATABASE_URL!);
 
 export const dbConnect = async () => {
     try {
@@ -17,6 +15,7 @@ export const dbConnect = async () => {
 };
 
 export const redisClient = createClient({
+    url: process.env.REDIS_URL,
     socket: {
         reconnectStrategy: function (retries) {
             if (retries > 10) {

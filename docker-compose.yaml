@@ -5,3 +5,30 @@ services:
         image: redis/redis-stack-server
         ports:
             - 6379:6379
+
+    # (reference): https://hub.docker.com/_/postgres
+    url_shortener_db:
+        image: postgres
+        restart: always
+        # set shared memory limit
+        shm_size: 128mb
+        environment:
+            - POSTGRES_DB=url_shortener
+            - POSTGRES_PASSWORD=postgres
+        volumes:
+            - ${USERPROFILE}/.url_shortnener_pgdata:/var/lib/postgresql/data
+
+    url_shortener_app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        env_file:
+            - .env
+        volumes:
+            - .:/app
+        depends_on:
+            - url_shortener_db
+            - url_shortener_cache
+        ports:
+            - 8000:8000
+        command: ["npm", "run", "dev"]

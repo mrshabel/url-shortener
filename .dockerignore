@@ -1,0 +1,14 @@
+node_modules
+
+# environment files
+.env
+.env.example
+
+# others
+.git
+Readme.md
+
+# container configuration files
+Dockerfile
+.dockerignore
+docker-compose.yaml
