@@ -1,13 +1,15 @@
 import { Sequelize } from "sequelize";
 import { createClient } from "redis";
 
-export const sequelize = new Sequelize(process.env.DATABASE_URL!);
+export const sequelize = new Sequelize(process.env.DATABASE_URL!, {
+    logging: false,
+});
 
 export const dbConnect = async () => {
     try {
         await sequelize.authenticate();
         console.log("Database connection established successfully");
-        await sequelize.sync({ force: true });
+        await sequelize.sync();
         console.log("All models were synchronized successfully.");
     } catch (error) {
         console.error("Unable to connect to database:\n", error);
