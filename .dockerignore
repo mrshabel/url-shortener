@@ -1,4 +1,5 @@
 node_modules
+diagrams
 
 # environment files
 .env
@@ -6,6 +7,7 @@ node_modules
 
 # others
 .git
+.gitignore
 Readme.md
 
 # container configuration files

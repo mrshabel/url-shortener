@@ -28,10 +28,10 @@ cd url-shortener
 
 ### 3. Build and Start the Containers
 
-Build and start the Docker containers using Docker Compose:
+Build and start the Docker containers using the `start.sh` bash script:
 
 ```bash
-docker compose up
+sh start.sh
 ```
 
 ### 4. Access the Application

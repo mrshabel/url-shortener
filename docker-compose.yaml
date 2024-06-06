@@ -25,7 +25,7 @@ services:
         env_file:
             - .env
         volumes:
-            - .:/app
+            - ./src:/app/src
         depends_on:
             - url_shortener_db
             - url_shortener_cache
