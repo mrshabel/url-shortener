@@ -11,6 +11,6 @@ diagrams
 Readme.md
 
 # container configuration files
-Dockerfile
+*.Dockerfile
 .dockerignore
 docker-compose.yaml
